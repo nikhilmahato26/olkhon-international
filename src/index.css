@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "@fontsource-variable/onest";
+
+/*
+  Design tokens
+  ------------------------------------------------------------------
+  Palette is taken from the supplied Olkhon logo:
+    brand blue  #064BA8 (logo ring, book, wordmark)
+    accent      #E77616 (logo globe, OLKHON lettering)
+  plus the deep navy from the brief for dark surfaces.
+
+  Radius system (applied everywhere):
+    buttons, chips, badges  -> rounded-full
+    cards, panels, images   -> rounded-2xl (16px)
+    form inputs             -> rounded-xl (12px)
+
+  Z-index scale:
+    z-30 floating WhatsApp button
+    z-40 sticky navbar, mobile action bar
+    z-50 mobile menu sheet
+    z-60 poster lightbox
+*/
+
+@theme {
+  --font-sans: "Onest Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-surface: #ffffff;
+  --color-surface-alt: #f4f7fb;
+  --color-surface-raised: #ffffff;
+  --color-ink: #1d2939;
+  --color-ink-strong: #0f1f38;
+  --color-muted: #5d6779;
+  --color-line: #e2e8f0;
+  --color-line-strong: #cbd5e1;
+
+  --color-brand: #0b4da8;
+  --color-brand-hover: #083d87;
+  --color-brand-soft: #e8f0fb;
+  --color-brand-ink: #0b4da8;
+
+  --color-accent: #e77616;
+  --color-accent-soft: #fdf1e6;
+  --color-accent-ink: #a9520c;
+
+  --color-navy: #102747;
+  --color-navy-raised: #17335b;
+  --color-navy-line: #26426b;
+  --color-on-navy: #eef2f8;
+  --color-on-navy-muted: #b4c0d3;
+
+  --color-whatsapp: #1a8f47;
+  --color-danger: #b42318;
+
+  --shadow-soft: 0 1px 2px rgb(16 39 71 / 0.06), 0 8px 24px -12px rgb(16 39 71 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(16 39 71 / 0.06), 0 24px 48px -20px rgb(16 39 71 / 0.28);
+
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-surface: #0a1628;
+    --color-surface-alt: #0e1d33;
+    --color-surface-raised: #12233d;
+    --color-ink: #d6dfeb;
+    --color-ink-strong: #f2f5fa;
+    --color-muted: #a2afc2;
+    --color-line: #22344f;
+    --color-line-strong: #33496b;
+
+    --color-brand: #2f6fd0;
+    --color-brand-hover: #4380de;
+    --color-brand-soft: #132a4d;
+    --color-brand-ink: #86b4f4;
+
+    --color-accent: #f08a33;
+    --color-accent-soft: #2b1d0f;
+    --color-accent-ink: #f5a868;
+
+    --color-navy: #0f2443;
+    --color-navy-raised: #163057;
+    --color-navy-line: #2a4670;
+
+    --color-whatsapp: #1e9e50;
+    --color-danger: #f97066;
+
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px -12px rgb(0 0 0 / 0.5);
+    --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.3), 0 24px 48px -20px rgb(0 0 0 / 0.6);
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-surface font-sans text-ink antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  /* Anchor targets clear the sticky navbar */
+  [id] {
+    scroll-margin-top: 88px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink-strong;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-brand-soft);
+    color: var(--color-ink-strong);
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-pad {
+    @apply py-16 md:py-24;
+  }
+
+  .field-input {
+    @apply block w-full rounded-xl border border-line-strong bg-surface-raised px-4 py-3 text-base text-ink transition-colors duration-200 placeholder:text-muted;
+    @apply hover:border-muted focus:border-brand focus:ring-2 focus:ring-brand/25 focus:outline-none;
+  }
+
+  .field-input[aria-invalid="true"] {
+    @apply border-danger focus:ring-danger/25;
+  }
+
+  /* Native select with room for the chevron icon */
+  select.field-input {
+    @apply appearance-none pr-11;
+  }
+}
+
+/* Safe-area padding for the mobile action bar */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
