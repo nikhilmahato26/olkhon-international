@@ -9,6 +9,11 @@ export function whatsappUrl(message?: string): string {
 
 const value = (v?: string | null) => (v && v.trim() ? v.trim() : "Not specified");
 
+/** Joins message lines, dropping optional lines that were left out (null). */
+const lines = (...parts: (string | null)[]) => parts.filter((p): p is string => p !== null).join("\n");
+
+const messageBlock = (m?: string) => (m && m.trim() ? `\nMessage:\n${m.trim()}` : null);
+
 /** Contact lines appended to form-generated messages. */
 function contactBlock(c: { name?: string; phone?: string; email?: string }): string {
   const lines = [`Name: ${value(c.name)}`];
@@ -21,9 +26,7 @@ export const messages = {
   general: (details?: { name?: string; phone?: string; message?: string }) => {
     const base = `${GREETING} I would like to enquire about your services. Please contact me with further details.`;
     if (!details) return base;
-    return [base, "", contactBlock(details), details.message ? `\nMessage:\n${details.message.trim()}` : ""]
-      .join("\n")
-      .trim();
+    return lines(base, "", contactBlock(details), messageBlock(details.message));
   },
 
   admission: (d: {
@@ -37,7 +40,7 @@ export const messages = {
     intake?: string;
     message?: string;
   }) =>
-    [
+    lines(
       `${GREETING} I would like to enquire about studying in Russia.`,
       "",
       contactBlock(d),
@@ -47,10 +50,10 @@ export const messages = {
       `Preferred University: ${value(d.university)}`,
       `Highest Education: ${value(d.education)}`,
       `Intended Intake: ${value(d.intake)}`,
-      d.message ? `\nMessage:\n${d.message.trim()}` : "",
+      messageBlock(d.message),
       "",
       "Please share the admission requirements and next steps.",
-    ].join("\n"),
+    ),
 
   synergy: () =>
     `${GREETING} I would like to enquire about admission opportunities at Synergy University. Please share the available programs, requirements, and application process.`,
@@ -62,7 +65,7 @@ export const messages = {
     `${GREETING} Could you please share a copy of your Synergy University authorization documentation?`,
 
   visa: (d: { name?: string; phone?: string; email?: string; service?: string; country?: string; description?: string }) =>
-    [
+    lines(
       `${GREETING} I would like to enquire about Russian visa and documentation assistance.`,
       "",
       contactBlock(d),
@@ -72,13 +75,16 @@ export const messages = {
       `Brief Description: ${value(d.description)}`,
       "",
       "Please contact me regarding the requirements.",
-    ].join("\n"),
+    ),
 
   businessVisa: () =>
     `${GREETING} I would like to enquire about Russian business visa invitation support and the required documentation.`,
 
   touristVisa: () =>
     `${GREETING} I would like to enquire about Russian tourist voucher and tourist visa support, and the required documentation.`,
+
+  visaPackage: (title: string, price: string) =>
+    `${GREETING} I would like to enquire about the ${title} service package (${price}). Please share the documents required and the next steps.`,
 
   translation: () =>
     `${GREETING} I would like to enquire about translation, notarization and attestation assistance for my student documents. Please share the requirements and next steps.`,
@@ -95,7 +101,7 @@ export const messages = {
     interest?: string;
     message?: string;
   }) =>
-    [
+    lines(
       `${GREETING} I am interested in discussing a potential B2B partnership.`,
       "",
       contactBlock(d),
@@ -103,10 +109,10 @@ export const messages = {
       `Organization: ${value(d.organization)}`,
       `Country: ${value(d.country)}`,
       `Partnership Interest: ${value(d.interest)}`,
-      d.message ? `\nMessage:\n${d.message.trim()}` : "",
+      messageBlock(d.message),
       "",
       "Please share the next steps.",
-    ].join("\n"),
+    ),
 };
 
 /**

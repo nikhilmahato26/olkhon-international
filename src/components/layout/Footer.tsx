@@ -15,6 +15,7 @@ const STUDY_LINKS = [
 ];
 
 const VISA_LINKS = [
+  { label: "Visa Packages & Pricing", href: ANCHORS.businessVisa },
   { label: "Business Visa Invitation", href: ANCHORS.businessVisa },
   { label: "Tourist Voucher Support", href: ANCHORS.touristVisa },
   { label: "Registration Support", href: ANCHORS.immigration },
@@ -44,7 +45,7 @@ export function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="bg-navy text-on-navy-muted">
-      <div className="container-page py-16 md:py-20">
+      <div className="container-page py-16 md:py-20 lg:pb-28">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-3">
             <Logo tone="navy" />
@@ -58,7 +59,7 @@ export function Footer() {
               className="mt-6 inline-flex min-h-11 items-center gap-2 rounded-full border border-white/25 px-5 text-sm font-semibold text-on-navy transition-colors hover:border-white/60 hover:bg-white/10"
             >
               <WhatsAppIcon className="size-4" />
-              WhatsApp Olkhon International
+              WhatsApp enquiry
             </a>
           </div>
 

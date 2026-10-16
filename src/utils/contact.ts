@@ -9,8 +9,3 @@ export function mailtoUrl(subject?: string, body?: string): string {
   const query = params.toString().replace(/\+/g, "%20");
   return `mailto:${business.email}${query ? `?${query}` : ""}`;
 }
-
-export const phoneLinks = {
-  primary: business.primaryPhone.uri,
-  additional: business.additionalPhone.uri,
-};

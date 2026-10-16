@@ -19,10 +19,7 @@ export function TopBar() {
             className="group flex min-w-0 items-center gap-2 font-medium hover:text-white"
           >
             <CalendarClock className="size-4 shrink-0 text-accent" strokeWidth={2} aria-hidden="true" />
-            <span className="truncate">
-              Synergy University {intake.title}
-              {intake.intakeLabel ? ` (${intake.intakeLabel})` : ""}: {intake.closingLabel}
-            </span>
+            <span className="truncate">{intake.banner}</span>
             <ArrowRight
               className="hidden size-3.5 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none sm:block"
               strokeWidth={2}

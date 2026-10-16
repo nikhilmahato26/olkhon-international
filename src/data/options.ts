@@ -25,6 +25,8 @@ export const PREFERRED_UNIVERSITIES = [
 ] as const;
 
 export const VISA_SERVICES = [
+  "Business Visa Package",
+  "Tourist Visa Package",
   "Business Visa Invitation",
   "Tourist Voucher",
   "Tourist Visa Documentation",

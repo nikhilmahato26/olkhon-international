@@ -44,7 +44,7 @@ export function TranslationAttestation() {
     <section id="translation-attestation" aria-labelledby="translation-title" className="section-pad bg-surface-alt">
       <div className="container-page grid gap-12 lg:grid-cols-12 lg:gap-14">
         <Reveal className="lg:sticky lg:top-28 lg:col-span-5 lg:self-start">
-          <div className="aspect-[4/3] overflow-hidden rounded-2xl lg:aspect-[4/5]">
+          <div className="aspect-4/3 overflow-hidden rounded-2xl lg:aspect-4/5">
             <img
               src={signing}
               alt="A person signing a printed document with a pen"
@@ -92,7 +92,7 @@ export function TranslationAttestation() {
                   <span className="absolute top-14 bottom-2 left-6 w-px bg-line-strong" aria-hidden="true" />
                 )}
                 <span className="relative inline-flex size-12 shrink-0 items-center justify-center rounded-full bg-brand text-white">
-                  <Icon className="size-[22px]" strokeWidth={1.75} aria-hidden="true" />
+                  <Icon className="size-5.5" strokeWidth={1.75} aria-hidden="true" />
                 </span>
                 <div className="pt-1">
                   <h3 className="text-xl font-semibold tracking-tight">{title}</h3>
@@ -120,11 +120,11 @@ export function TranslationAttestation() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href={ANCHORS.visaEnquiry} onClick={() => prefillVisa("Translation, Notarization & Attestation")}>
               Ask about document assistance
-              <ArrowRight className="size-[18px]" strokeWidth={2} aria-hidden="true" />
+              <ArrowRight className="size-4.5" strokeWidth={2} aria-hidden="true" />
             </ButtonLink>
             <ButtonLink href={whatsappUrl(messages.translation())} external variant="secondary">
-              <WhatsAppIcon className="size-[18px] text-whatsapp" />
-              Chat on WhatsApp
+              <WhatsAppIcon className="size-4.5 text-whatsapp" />
+              Ask on WhatsApp
             </ButtonLink>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import logo from "../../assets/logo/olkhon-logo.png";
+import logo from "../../assets/logo/olkhon-logo.webp";
 import { Reveal } from "../ui/Reveal";
 
 const FOCUS = [
@@ -26,7 +26,7 @@ export function About() {
               height={609}
               loading="lazy"
               decoding="async"
-              className="h-auto w-full max-w-[360px]"
+              className="h-auto w-full max-w-90"
             />
           </div>
         </Reveal>

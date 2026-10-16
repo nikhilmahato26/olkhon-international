@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { Reveal } from "../ui/Reveal";
 import { SectionHeading } from "../ui/SectionHeading";
 
@@ -34,16 +34,17 @@ export function ServiceApproach() {
           />
         </Reveal>
 
-        <ol className="relative mt-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+        <div className="relative mt-14">
           {/* Connecting line: draws once on desktop to show the sequence. */}
-          <motion.span
+          <m.span
             aria-hidden="true"
-            className="absolute top-6 right-[12%] left-6 hidden h-px origin-left bg-line-strong lg:block"
+            className="absolute top-6 right-[calc(25%-3rem)] left-6 hidden h-px origin-left bg-line-strong lg:block"
             initial={reduce ? false : { scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, amount: 0.6 }}
             transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
           />
+        <ol className="relative grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           {STEPS.map((step, i) => (
             <Reveal as="li" key={step.title} delay={0.1 + i * 0.1} className="relative">
               <span className="relative inline-flex size-12 items-center justify-center rounded-full border-2 border-brand bg-surface text-lg font-semibold text-brand-ink">
@@ -54,6 +55,7 @@ export function ServiceApproach() {
             </Reveal>
           ))}
         </ol>
+        </div>
 
         <Reveal className="mt-14 border-t border-line pt-8">
           <p className="max-w-[70ch] leading-relaxed text-ink">

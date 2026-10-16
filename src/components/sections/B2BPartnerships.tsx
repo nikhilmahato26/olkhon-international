@@ -87,7 +87,7 @@ export function B2BPartnerships() {
               international travel services.
             </p>
           </Reveal>
-          <Reveal delay={0.06} className="mt-8 aspect-[16/9] overflow-hidden rounded-2xl">
+          <Reveal delay={0.06} className="mt-8 aspect-video overflow-hidden rounded-2xl">
             <img
               src={handshake}
               alt="Two business partners shaking hands across a table"

@@ -46,7 +46,6 @@ export function VisaEnquiryForm() {
     resetResult();
     setValue("service", visaPrefill.service, { shouldDirty: true, shouldValidate: isSubmitted });
     // Only react to new prefill requests.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [visaPrefill?.key]);
 
   const onSubmit = (v: Values) => {

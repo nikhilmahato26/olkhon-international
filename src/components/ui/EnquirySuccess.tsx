@@ -1,5 +1,5 @@
 import { CircleCheck, Mail, RotateCcw } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
 import { mailtoUrl } from "../../utils/contact";
 import { whatsappUrl } from "../../utils/whatsapp";
@@ -24,7 +24,7 @@ export function EnquirySuccess({ message, emailSubject, popupBlocked, note, onRe
   }, []);
 
   return (
-    <motion.div
+    <m.div
       initial={reduce ? false : { opacity: 0, scale: 0.98, y: 8 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
@@ -48,7 +48,7 @@ export function EnquirySuccess({ message, emailSubject, popupBlocked, note, onRe
           Open WhatsApp
         </ButtonLink>
         <ButtonLink href={mailtoUrl(emailSubject, message)} variant="secondary">
-          <Mail className="size-[18px]" strokeWidth={1.75} aria-hidden="true" />
+          <Mail className="size-4.5" strokeWidth={1.75} aria-hidden="true" />
           Send by email instead
         </ButtonLink>
       </div>
@@ -63,6 +63,6 @@ export function EnquirySuccess({ message, emailSubject, popupBlocked, note, onRe
         <RotateCcw className="size-4" strokeWidth={2} aria-hidden="true" />
         Start a new enquiry
       </button>
-    </motion.div>
+    </m.div>
   );
 }

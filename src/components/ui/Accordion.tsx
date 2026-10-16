@@ -1,6 +1,6 @@
 import { ChevronDown } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useId, useState, type ReactNode } from "react";
 
 export type AccordionItem = { id: string; title: string; icon?: LucideIcon; content: ReactNode };
@@ -59,7 +59,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
             </h4>
             <AnimatePresence initial={false}>
               {isOpen && (
-                <motion.div
+                <m.div
                   id={panelId}
                   role="region"
                   aria-labelledby={buttonId}
@@ -70,7 +70,7 @@ export function Accordion({ items }: { items: AccordionItem[] }) {
                   className="overflow-hidden"
                 >
                   <div className="px-5 pb-6 md:px-6 md:pl-[5.5rem]">{item.content}</div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </li>

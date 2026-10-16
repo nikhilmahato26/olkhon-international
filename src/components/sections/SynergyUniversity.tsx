@@ -30,7 +30,7 @@ function IntakeCard({ intake, onViewPoster }: { intake: Intake; onViewPoster: (i
             height={1280}
             loading="lazy"
             decoding="async"
-            className="aspect-[9/16] w-full object-cover transition-transform duration-500 ease-out-soft group-hover:scale-[1.03] motion-reduce:transition-none"
+            className="aspect-9/16 w-full object-cover transition-transform duration-500 ease-out-soft group-hover:scale-[1.03] motion-reduce:transition-none"
           />
         </span>
         <span className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-brand-ink group-hover:underline">
@@ -143,7 +143,7 @@ export function SynergyUniversity() {
               Enquire about Synergy University
             </ButtonLink>
             <ButtonLink href={whatsappUrl(messages.synergy())} external variant="secondary">
-              <WhatsAppIcon className="size-[18px] text-whatsapp" />
+              <WhatsAppIcon className="size-4.5 text-whatsapp" />
               Ask on WhatsApp
             </ButtonLink>
           </div>

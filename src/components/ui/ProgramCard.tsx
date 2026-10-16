@@ -10,7 +10,7 @@ export function ProgramCard({ program, wide = false }: { program: Program; wide?
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-surface-raised shadow-soft transition-shadow duration-300 hover:shadow-lift">
-      <div className={`overflow-hidden ${wide ? "aspect-[16/9]" : "aspect-[16/9] md:aspect-[4/3]"}`}>
+      <div className={`overflow-hidden ${wide ? "aspect-video" : "aspect-video md:aspect-4/3"}`}>
         <img
           src={program.image}
           alt={program.imageAlt}

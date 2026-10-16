@@ -27,7 +27,7 @@ export function StudyInRussia() {
 
         <div className="relative mt-12 md:mt-14">
           <Reveal y={16}>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl sm:aspect-[16/9] lg:aspect-[21/9]">
+            <div className="aspect-4/3 overflow-hidden rounded-2xl sm:aspect-video lg:aspect-21/9">
               <img
                 src={kremlin}
                 alt="The Moscow Kremlin towers and Saint Basil's Cathedral in autumn"
@@ -42,7 +42,7 @@ export function StudyInRussia() {
 
           <Reveal
             delay={0.1}
-            className="relative mx-3 -mt-16 sm:mx-8 lg:absolute lg:right-8 lg:bottom-8 lg:mx-0 lg:mt-0 lg:w-[440px]"
+            className="relative mx-3 -mt-16 sm:mx-8 lg:absolute lg:right-8 lg:bottom-8 lg:mx-0 lg:mt-0 lg:w-110"
           >
             <div className="rounded-2xl border border-line bg-surface-raised p-6 shadow-lift md:p-8">
               <h3 className="text-lg font-semibold tracking-tight">Where we can help</h3>

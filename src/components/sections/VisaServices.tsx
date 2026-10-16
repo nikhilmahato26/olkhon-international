@@ -1,3 +1,4 @@
+import { Info } from "lucide-react";
 import redSquareNight from "../../assets/images/moscow-red-square-night.webp";
 import { SCOPE_CATEGORIES } from "../../data/visaServices";
 import { Reveal } from "../ui/Reveal";
@@ -35,7 +36,7 @@ export function VisaServices() {
             </p>
           </Reveal>
           <Reveal delay={0.1} className="lg:col-span-5">
-            <div className="aspect-[16/10] overflow-hidden rounded-2xl ring-1 ring-white/10 lg:aspect-[4/3]">
+            <div className="aspect-16/10 overflow-hidden rounded-2xl ring-1 ring-white/10 lg:aspect-4/3">
               <img
                 src={redSquareNight}
                 alt="Saint Basil's Cathedral lit up at night on Red Square, Moscow"
@@ -82,6 +83,11 @@ export function VisaServices() {
           <BusinessVisa />
           <TouristVisa />
         </div>
+        <p className="mt-6 flex max-w-[90ch] items-start gap-2 text-sm leading-relaxed text-on-navy-muted">
+          <Info className="mt-0.5 size-4 shrink-0" strokeWidth={2} aria-hidden="true" />
+          Prices are Olkhon International service package fees in Indian rupees (INR). Please confirm what each
+          package includes, and the documents required, with our team before you proceed.
+        </p>
 
         <ImmigrationAssistance />
       </div>

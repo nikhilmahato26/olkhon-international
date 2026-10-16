@@ -76,7 +76,6 @@ export function AdmissionForm() {
     if (admissionPrefill.program) setValue("program", admissionPrefill.program, opts);
     if (admissionPrefill.university) setValue("university", admissionPrefill.university, opts);
     if (admissionPrefill.intake) setValue("intake", admissionPrefill.intake, opts);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [admissionPrefill?.key]);
 
   const onSubmit = (v: Values) => {
@@ -107,7 +106,7 @@ export function AdmissionForm() {
           <p className="mt-5 max-w-[52ch] text-base leading-relaxed text-muted md:text-lg">
             Tell us what you would like to study. This is an enquiry, not a university application.
           </p>
-          <div className="mt-8 aspect-[16/10] overflow-hidden rounded-2xl">
+          <div className="mt-8 aspect-16/10 overflow-hidden rounded-2xl">
             <img
               src={studentsGroup}
               alt="Four students smiling and talking together at a café table"
@@ -123,7 +122,7 @@ export function AdmissionForm() {
             {NEXT_STEPS.map(({ icon: Icon, text }) => (
               <li key={text} className="flex items-start gap-4">
                 <span className="inline-flex size-10 shrink-0 items-center justify-center rounded-full bg-brand-soft text-brand-ink">
-                  <Icon className="size-[18px]" strokeWidth={1.75} aria-hidden="true" />
+                  <Icon className="size-4.5" strokeWidth={1.75} aria-hidden="true" />
                 </span>
                 <p className="pt-2 leading-relaxed text-ink">{text}</p>
               </li>

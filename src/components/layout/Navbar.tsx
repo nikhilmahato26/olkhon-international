@@ -1,19 +1,20 @@
 import { Mail, Menu, Phone, X } from "lucide-react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, m, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 import { business } from "../../config/business";
 import { useActiveSection } from "../../hooks/useActiveSection";
-import { ANCHORS, NAV_ITEMS } from "../../data/navigation";
+import { ANCHORS, NAV_ITEMS, SECTION_TO_NAV } from "../../data/navigation";
 import { messages, whatsappUrl } from "../../utils/whatsapp";
 import { ButtonLink } from "../ui/Button";
 import { Logo } from "../ui/Logo";
 import { WhatsAppIcon } from "../ui/WhatsAppIcon";
 
-const SECTION_IDS = NAV_ITEMS.map((n) => n.id);
+const SECTION_IDS = Object.keys(SECTION_TO_NAV);
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const active = useActiveSection(SECTION_IDS);
+  const section = useActiveSection(SECTION_IDS);
+  const active = section ? SECTION_TO_NAV[section] : null;
   const reduce = useReducedMotion();
 
   // Lock page scroll and close on Escape while the mobile sheet is open.
@@ -38,8 +39,8 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur-md supports-[backdrop-filter]:bg-surface/80">
-      <nav aria-label="Main" className="container-page flex h-[72px] items-center justify-between gap-6">
+    <header className="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur-md supports-backdrop-filter:bg-surface/80">
+      <nav aria-label="Main" className="container-page flex h-18 items-center justify-between gap-3 sm:gap-6">
         <a href={ANCHORS.top} className="shrink-0 rounded-xl" aria-label={`${business.displayName}, back to top`}>
           <Logo />
         </a>
@@ -56,15 +57,13 @@ export function Navbar() {
                     isActive ? "text-brand-ink" : "text-ink hover:text-brand-ink"
                   }`}
                 >
-                  {item.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-accent"
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      aria-hidden="true"
-                    />
-                  )}
+                  {item.shortLabel}
+                  <span
+                    className={`absolute inset-x-3 -bottom-0.5 h-0.5 rounded-full bg-accent transition-transform duration-300 ease-out-soft motion-reduce:transition-none ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    }`}
+                    aria-hidden="true"
+                  />
                 </a>
               </li>
             );
@@ -79,10 +78,10 @@ export function Navbar() {
             <Phone className="size-4 text-brand-ink" strokeWidth={2} aria-hidden="true" />
             {business.primaryPhone.label}
           </a>
-          <ButtonLink href={ANCHORS.apply} size="sm" className="hidden sm:inline-flex">
+          <ButtonLink href={ANCHORS.apply} size="sm" className="max-sm:hidden">
             Apply for admission
           </ButtonLink>
-          <ButtonLink href={ANCHORS.apply} size="sm" className="sm:hidden" aria-label="Apply for admission">
+          <ButtonLink href={ANCHORS.apply} size="sm" className="max-[399px]:hidden sm:hidden" aria-label="Apply for admission">
             Apply
           </ButtonLink>
           <button
@@ -100,7 +99,7 @@ export function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <m.div
             id="mobile-menu"
             initial={reduce ? { opacity: 1 } : { opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
@@ -111,7 +110,7 @@ export function Navbar() {
             <div className="container-page flex min-h-full flex-col py-6">
               <ul className="flex flex-col">
                 {NAV_ITEMS.map((item, i) => (
-                  <motion.li
+                  <m.li
                     key={item.id}
                     initial={reduce ? false : { opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -126,7 +125,7 @@ export function Navbar() {
                     >
                       {item.label}
                     </a>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
 
@@ -139,12 +138,12 @@ export function Navbar() {
                 </ButtonLink>
                 <div className="mt-4 grid gap-2 text-[15px]">
                   <a href={business.primaryPhone.uri} className="flex min-h-11 items-center gap-3 font-semibold text-ink-strong">
-                    <Phone className="size-[18px] text-brand-ink" strokeWidth={1.75} aria-hidden="true" />
+                    <Phone className="size-4.5 text-brand-ink" strokeWidth={1.75} aria-hidden="true" />
                     {business.primaryPhone.label}
                     <span className="text-sm font-normal text-muted">India</span>
                   </a>
                   <a href={business.additionalPhone.uri} className="flex min-h-11 items-center gap-3 font-semibold text-ink-strong">
-                    <Phone className="size-[18px] text-brand-ink" strokeWidth={1.75} aria-hidden="true" />
+                    <Phone className="size-4.5 text-brand-ink" strokeWidth={1.75} aria-hidden="true" />
                     {business.additionalPhone.label}
                     <span className="text-sm font-normal text-muted">Russia</span>
                   </a>
@@ -154,17 +153,17 @@ export function Navbar() {
                     rel="noopener noreferrer"
                     className="flex min-h-11 items-center gap-3 font-semibold text-ink-strong"
                   >
-                    <WhatsAppIcon className="size-[18px] text-whatsapp" />
+                    <WhatsAppIcon className="size-4.5 text-whatsapp" />
                     WhatsApp enquiry
                   </a>
                   <a href={`mailto:${business.email}`} className="flex min-h-11 items-center gap-3 font-semibold break-all text-ink-strong">
-                    <Mail className="size-[18px] shrink-0 text-brand-ink" strokeWidth={1.75} aria-hidden="true" />
+                    <Mail className="size-4.5 shrink-0 text-brand-ink" strokeWidth={1.75} aria-hidden="true" />
                     {business.email}
                   </a>
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </header>

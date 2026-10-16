@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { business } from "../../config/business";
+import { BUSINESS_VISA_PACKAGES, TOURIST_VISA_PACKAGES } from "../../data/visaServices";
 
 const TITLE = "Olkhon International Consultants | Study in Russia & Visa Assistance";
 const DESCRIPTION =
@@ -80,6 +81,17 @@ function structuredData() {
       address,
       areaServed: ["India", "Russia"],
       knowsAbout: services,
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Russia visa service packages",
+        itemListElement: [...BUSINESS_VISA_PACKAGES, ...TOURIST_VISA_PACKAGES].map((pkg) => ({
+          "@type": "Offer",
+          name: pkg.title,
+          price: String(pkg.priceInr),
+          priceCurrency: "INR",
+          itemOffered: { "@type": "Service", name: `${pkg.title} service package` },
+        })),
+      },
     },
   ];
 }

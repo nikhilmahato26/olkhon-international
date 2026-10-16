@@ -152,3 +152,35 @@ export const LEGAL_BOUNDARIES = [
   "We are not a government agency, embassy, consulate, immigration authority or law firm.",
   "Outcomes depend on the relevant authorities and applicable law.",
 ];
+
+/**
+ * Visa service packages and prices, as supplied by the client.
+ * Only list details the client has stated; leave `details` empty otherwise.
+ */
+export type VisaPackage = {
+  id: string;
+  title: string;
+  details: string[];
+  /** Service package price in Indian rupees. */
+  priceInr: number;
+};
+
+export const BUSINESS_VISA_PACKAGES: VisaPackage[] = [
+  {
+    id: "business-1y-multiple",
+    title: "1-Year Multiple-Entry Business Visa",
+    details: ["For business professionals", "Includes embassy charges"],
+    priceInr: 69999,
+  },
+  {
+    id: "business-3m-single",
+    title: "3-Month Single-Entry Business Visa",
+    details: [],
+    priceInr: 38000,
+  },
+];
+
+export const TOURIST_VISA_PACKAGES: VisaPackage[] = [
+  { id: "tourist-30d", title: "30-Day Tourist Visa", details: [], priceInr: 21000 },
+  { id: "tourist-90d", title: "90-Day Tourist Visa", details: [], priceInr: 29000 },
+];

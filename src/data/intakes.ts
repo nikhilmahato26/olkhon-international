@@ -10,11 +10,12 @@ import type { PreferredProgram, PreferredUniversity } from "./options";
 export type Intake = {
   id: string;
   title: string;
-  campaign: string;
   location: string;
   /** Last day applications are accepted, ISO date (inclusive). */
   closesOn: string;
   closingLabel: string;
+  /** One-line announcement for the top bar. */
+  banner: string;
   intakeLabel?: string;
   highlights: string[];
   poster: string;
@@ -26,10 +27,10 @@ export const INTAKES: Intake[] = [
   {
     id: "bba-english",
     title: "BBA in English",
-    campaign: "Last call to study in Moscow",
     location: "Moscow",
     closesOn: "2026-10-31",
     closingLabel: "Open until the end of October 2026",
+    banner: "Synergy University BBA in English: applications open until the end of October 2026",
     highlights: ["Bachelor of Business Administration taught in English", "Study in Moscow", "Part-time job opportunities"],
     poster: bbaPoster,
     posterAlt:
@@ -39,10 +40,10 @@ export const INTAKES: Intake[] = [
   {
     id: "russian-language",
     title: "Russian Language Course",
-    campaign: "Learn Russian. Experience Moscow. Build your future.",
     location: "Moscow",
     closesOn: "2026-10-30",
     closingLabel: "Admission deadline 30 October 2026",
+    banner: "Synergy University Russian language course, January 2027 intake: apply by 30 October 2026",
     intakeLabel: "January 2027 intake",
     highlights: ["12-month language course", "Study in Moscow", "European standard of living", "Affordable fee structure"],
     poster: languagePoster,

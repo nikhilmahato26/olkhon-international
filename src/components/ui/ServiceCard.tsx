@@ -60,7 +60,7 @@ export function ServiceCard({ service }: { service: Service }) {
             decoding="async"
             className="absolute inset-0 -z-20 size-full object-cover transition-transform duration-700 ease-out-soft group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
           />
-          <div className="absolute inset-0 -z-10 bg-gradient-to-t from-navy via-navy/75 to-navy/15" aria-hidden="true" />
+          <div className="absolute inset-0 -z-10 bg-linear-to-t from-navy via-navy/75 to-navy/15" aria-hidden="true" />
         </>
       )}
       {service.tone === "navy" && (
@@ -71,7 +71,7 @@ export function ServiceCard({ service }: { service: Service }) {
       )}
 
       <span className={`inline-flex size-12 items-center justify-center rounded-full ${s.icon}`}>
-        <Icon className="size-[22px]" strokeWidth={1.75} aria-hidden="true" />
+        <Icon className="size-5.5" strokeWidth={1.75} aria-hidden="true" />
       </span>
       <h3 className={`mt-5 text-xl font-semibold tracking-tight ${s.title}`}>{service.title}</h3>
       <p className={`mt-3 max-w-[46ch] leading-relaxed ${s.body}`}>{service.description}</p>

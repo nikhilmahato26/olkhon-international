@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "motion/react";
+import { m, useReducedMotion } from "motion/react";
 import type { ReactNode } from "react";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 /** Fades content up as it enters the viewport. Static under reduced motion. */
 export function Reveal({ children, className, delay = 0, y = 24, as = "div" }: Props) {
   const reduce = useReducedMotion();
-  const Component = motion[as];
+  const Component = m[as];
   return (
     <Component
       className={className}
