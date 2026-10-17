@@ -17,7 +17,8 @@ const KEYWORDS = [
   "Russian immigration consultancy",
   "Russian language courses",
   "document translation notarization attestation for students",
-  "study abroad consultancy Hyderabad",
+  "study abroad consultancy Malappuram",
+  "Russian visa services Kerala",
   "education agent partnership Russia",
 ].join(", ");
 
@@ -79,7 +80,7 @@ function structuredData() {
       email: business.email,
       telephone: [business.primaryPhone.e164, business.additionalPhone.e164],
       address,
-      areaServed: ["India", "Russia"],
+      areaServed: ["India", "Russia", "GCC", "Africa", "Europe"],
       knowsAbout: services,
       hasOfferCatalog: {
         "@type": "OfferCatalog",

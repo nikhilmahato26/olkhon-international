@@ -26,14 +26,19 @@ export const business = {
   whatsappUrl: "https://wa.me/919746522897",
 
   location: {
-    city: "Hyderabad",
-    region: "Telangana",
+    city: "Malappuram",
+    region: "Kerala",
     country: "India",
     countryCode: "IN",
-    label: "Hyderabad, Telangana, India",
+    label: "Malappuram, Kerala, India",
     /** General city search only. No street address has been supplied. */
-    mapEmbedUrl: "https://www.google.com/maps?q=Hyderabad,+Telangana,+India&output=embed",
+    mapEmbedUrl: "https://www.google.com/maps?q=Malappuram,+Kerala,+India&output=embed",
   },
+
+  /** Only experience figure the client has approved for publication. */
+  experienceYears: "10+",
+  /** Regions served, as stated by the client. Russia is the specialism. */
+  regionsServed: ["Russia", "GCC", "Africa", "Europe", "Other global destinations"],
 
   universityFocus: "Synergy University",
   studyDestination: "Russia",

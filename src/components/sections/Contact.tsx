@@ -50,7 +50,7 @@ export function Contact() {
   const err = (k: keyof Values) => errors[k]?.message;
 
   return (
-    <section id="contact" aria-labelledby="contact-title" className="section-pad bg-surface-alt">
+    <section id="contact" aria-labelledby="contact-title" className="section-pad">
       <div className="container-page">
         <Reveal>
           <SectionHeading
@@ -163,7 +163,7 @@ export function Contact() {
         <Reveal className="mt-6">
           <div className="overflow-hidden rounded-2xl border border-line bg-surface-raised">
             <iframe
-              title="Map of Hyderabad, Telangana, India (general city area)"
+              title={`Map of ${business.location.label} (general area)`}
               src={business.location.mapEmbedUrl}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -171,7 +171,7 @@ export function Contact() {
             />
           </div>
           <p className="mt-3 text-sm text-muted">
-            The map shows Hyderabad generally. Contact us for meeting arrangements.
+            The map shows {business.location.city} generally. Contact us for meeting arrangements.
           </p>
         </Reveal>
       </div>

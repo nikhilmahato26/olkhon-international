@@ -20,6 +20,8 @@ export function Home() {
     <>
       <Seo />
       <Hero />
+      {/* Company introduction directly under the hero. */}
+      <About />
       <StudyInRussia />
       <StudyPrograms />
       <SynergyUniversity />
@@ -31,7 +33,6 @@ export function Home() {
       <B2BPartnerships />
       <AdmissionForm />
       <VisaEnquiryForm />
-      <About />
       <Contact />
     </>
   );

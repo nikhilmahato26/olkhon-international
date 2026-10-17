@@ -32,7 +32,7 @@ export const SECTION_TO_NAV: Record<string, string | null> = {
   "b2b-partnerships": "b2b-partnerships",
   apply: null,
   "visa-enquiry": "visa-services",
-  about: null,
+  about: "top",
   contact: "contact",
 };
 
